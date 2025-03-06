@@ -1,0 +1,98 @@
+\section{Background}
+\label{sec:background}
+
+%In this section,
+This section gives a short overview of security engineering, trace links, and maximum flow analysis as used in \appr.
+
+\subsection{Security Engineering Practices}
+Best practices in security engineering are critical to ensuring the development of secure and robust software systems\,\cite{1281254}.
+By integrating security into every phase of the software development process, organizations can proactively identify and address vulnerabilities, protect sensitive data, and minimize the risk of security breaches\,\cite{9669954}.
+In the process, various security-related artifacts are created, such as starting with abstract security goals that are refined into project-specific security requirements\,\cite{turpe2017trouble}, and later to a secure architecture\,\cite{4359475}.
+In practice, artifacts often stem from less integrated processes but are still created frequently, such as documenting the results of a risk assessment\,\cite{SHAMELISENDI201614,BRUNNER2020101776}.
+
+Many security-related standards for the development of critical software systems, such as ISO/IEC\,62304\,\cite{IEC62304}, require such a systematic analysis of potential threats and vulnerabilities early in the development process.
+Identifying assets, potential attackers, and attack vectors is essential for prioritizing security requirements and designing appropriate countermeasures\,\cite{TUMA2018275}.
+Security certification standards such as the \emph{Common Criteria}\,\cite{cc} provide a framework to support this process and require explicit documentation of these practices, including the artifacts produced. Such artifacts include, but are not limited to, architecture documentation and related security considerations, planned countermeasures, and documentation of risk assessments, including identified risks and their impact, if they occur.
+Developers then implement the planned functionality, security requirements, and countermeasures.
+
+While such security standards and the artifacts that must be delivered are often oriented on traditional development processes such as the V model\,\cite{MuellerEttrich1997}, they usually do not require to follow a specific development process.
+Standards define security-related engineering steps that must be performed and documented, i.e., system design and risk assessment documented in the form of a system architecture and corresponding documents capturing threats, likelihoods, and possible impacts in relation to this architecture.
+Still, there is often a perceived conflict with today's trending agile development processes.
+Particularly model-based system development is often seen as conflicting with agile development processes, although the feasibility of agile model-based development processes has explicitly been shown\,\cite{Gray2018}.
+
+At the implementation level, secure coding practices, such as the CERT Oracle Secure Coding Standard for Java\,\cite{long2011cert}, can help minimize the introduction of vulnerabilities.
+Guidelines and security principles such as those provided by OWASP\,\cite{secure-coding}, which include principles such as input validation, output encryption, and proper error handling, also help to implement secure software systems.
+In addition, tools can statically check for compliance with best practices\,\cite{sonar} as well as many violations of security principles.
+Overall, tool support, particularly in the form of static security analyzers\,\cite{BCP+13}, is essential to an effective security engineering process.
+However, as discussed earlier, the output of such tools is likely to be overwhelmingly large\,\cite{Walden2014}.
+
+Many security engineering approaches explicitly combine several artifacts to support security engineering, such as requirements, UML models annotated with the UMLsec\,\cite{jurjens2005secure} security profile, and security standards such as the Common Criteria\,\cite{houmb2010eliciting}, other combine
+SecBPMN models\,\cite{Salnitri2017DSB} and security oriented goal models\,\cite{Salnitri2020},
+risk models and requirements\,\cite{5507389}, or design models and source code\,\cite{Peldszus2022}.
+Tracing, for example of security requirements, is typically a key component of these approaches and is also essential for security maintenance\,\cite{Yu2008}.
+For this reason, security standards such as the Common Criteria\,\cite{cc} not only ask for artifacts documenting the security considerations but also require traceability for security-related decisions.
+
+
+\subsection{Trace Links \& Trace Link Management}
+\label{sec:background:tracelinks}
+%\subsubsection{Trace Links and Traceability}
+In software engineering, trace links (%also referred to as
+or
+traceability links)  are explicit interrelations between multiple development artifacts (e.g.,\,\cite{schwarz2010gbt}).
+Those links have to be distinguished from traces, which are recorded software execution paths\,\cite{Praehofer2014,Hendriks2016}. ISO/IEC/IEEE\,24765\,\cite{ISO24765:2010} describes traceability as \enquote{the degree to which a relationship can be established between two or more products of the development process, especially products having a predecessor-successor or master-subordinate relationship %to one another
+[\dots]}. There are mainly two communities using trace links\,\cite{winkler2010survey}: %The r
+Requirements engineering %community
+uses %trace links
+them
+to trace requirements to design and implementation and back\,\cite{Gotel1994Trace,Pinheiro2004trace}, while model-driven software engineering uses trace links among design artifacts (e.g.,\,\cite{Mouratidis2010GDS,Ahmadian2017MBP}) or models and code~(e.g.,\,\cite{Peldszus2019SDF}).
+
+Possibilities to establish trace links range from simple references of complete documents to individual, identifiable, typed, and possibly attributed connections between particular elements within development artifacts. %Winkler and von Pilgrim\,\cite{winkler2010survey} surveyed approaches for specifying and maintaining trace links in requirements engineering and model-driven development.
+Different approaches exist to specify and maintain \cite{winkler2010survey} various types of trace links %exist
+\cite{spanoudakis2005software,Espinoza2006ASC}.
+We aim at explicit, material, and typed links conforming to a traceability model \cite{Pinheiro2004trace,schwarz2010gbt,Grosser2022RDR} defining the possible trace links and traceable objects.
+
+%\subsubsection{Tool Support for Trace Link Management}
+Various works support establishing and maintaining trace links between a system's implementation and its design models.
+E.g., %the
+\emph{GRaViTY}% framework
+\,\cite{PKLS2015,PBKJ2021,Peldszus2022} %utilizes
+uses
+\emph{triple graph grammars}~(TGG)\,\cite{schurr1994specification} to synchronize changes between the implementation and design-time UML models.
+Thereby, a correspondence model is built that contains all trace links.
+Similarly, the \emph{Codeling} tool \cite{Konersmann2018OEM, Konersmann2018EIA} relates models with code by developing mappings between design model elements and recurring code structures.
+Correspondences are defined on the type level, rather than the instance level.
+To this end, a model can be extracted from the source code, and changes in a model can be propagated to code.
+Trace links solely within or between artifacts of the same type are also exploited.
+E.g., the \emph{T-Reqs} framework\,\cite{Grosser2022RDR} uses trace links
+%managed in a \emph{Neo4J} graph
+to identify completeness and consistency flaws in requirements over different abstraction levels to support the integration of reusable requirements.
+In \emph{single underlying model} (SUM\,\cite{Meier2020,Atkinson2010}) approaches, all artifacts, including requirements, design models, but also code models, should be maintained in a single model that provides trace links among them.
+
+Besides maintaining trace links from the beginning of development, some approaches allow reconstructing trace links. % after the fact.
+%For data flow diagrams~(DFDs), Peldszus et al.\,\cite{Peldszus2019SDF,TPS2022} propose a semi-automated approach for constructing trace links between the DFDs and their implementation. Such approaches exist for many artifact types \cite{Rasiman2022,Merten2016,Samer2019NAI,Wang2020DSS,Goknil2014}.
+For data flow diagrams (DFDs), which are widely used for threat modeling, semi-automated approaches allow the construction of trace links between the DFDs and their implementation\,\cite{Peldszus2019SDF,TPS2022}.
+Similar approaches exist for many other artifact types\,\cite{Rasiman2022,Merten2016}.
+Among others, there is work on detecting dependencies between requirements\,\cite{Samer2019NAI,Wang2020DSS}, recovering trace links between requirements and the architecture\,\cite{Goknil2014,Keim2024},
+between requirements and source code\,\cite{10.1145/2491627.2491633,Hey2024}, and between the architecture and source code\,\cite{keim2021trace}.
+Other research goes into the direction of automatically completing incomplete sets of trace links, e.g., between entries in issue trackers and commits\,\cite{rath2018}.
+
+\subsection{The Maximum Flow Problem}
+\noindent
+The maximum flow problem is a common problem in graph theory\,\cite{harris1955} to which we will reduce the problem of issue prioritization.%
+This problem is commonly used to express connectivity in graphs\,\cite{Esfahanian2013}, such as how strong two nodes are connected.
+In practice, this is applied for optimization problems such as flight crew planning, dimensioning telecommunication networks, or optimizing transportation\,\cite{Feng2012}.
+We consider a project's security preferences captured in relevant security qualities to be the core reference for security planning and engineering.
+Therefore, we want to prioritize issues according to the strength of their connection to those of these qualities they could affect, which can be seen as an instance of a maximum flow problem.
+
+Given a flow network, that is, a directed graph $G = (N,E)$ consisting of nodes $n \in N$ and directed edges $e \in E$ with capacities~$w$, the question of the maximum flow problem is how large is the network capacity between a specific source and sink, i.e., the maximum flow.
+This can be thought of as the number of flow tokens that can be propagated from a source, which acts as an infinite source of flow tokens, to a sink, which consumes all tokens that can reach it.
+No more tokens can be sent over each edge than its capacity~$w$ indicates.
+The higher the maximum flow between two nodes, the stronger the connection between those two nodes.
+
+Various algorithms solve the maximum flow problem efficiently.
+The best complexity is strongly polynomial.
+Two major algorithms %for solving the problem
+are Ford-Fulkerson's\,\cite{ford_fulkerson_1956} and Dinic's\,\cite{dinic1970algorithm} algorithms.
+The former has a complexity of $\mathcal{O}(E|f_{max}|)$ where $f_{max}$ is the flow with maximum value.
+Dinic's algorithm performs better with $\mathcal{O}(VE\log(V))$ when a dynamic tree data structure is used.
+In \appr{}, we implement Dinic’s algorithm.

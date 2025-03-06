@@ -1,0 +1,26 @@
+\section{Conclusion}
+\label{sec:conslusion}
+Static code analyzers report large amounts of potentially security-critical issues even for moderately large code bases.
+Fixing all of these issues is usually infeasible, and finding the critical issues manually is difficult.
+In this paper, we present \appr{} for automatically prioritizing issues reported from static code analyzers according to project-specific security needs.
+\appr{} utilizes trace links between artifacts such as quality models, requirements, architecture, code, and issues reported from static code analyzers, reducing the problem at hand to the maximum flow problem.
+
+We evaluated \appr{} on the iTrust Electronics Health Records system, a web application for managing medical records, and the server component of the German Covid-19 warning app.
+Our results show that \appr{} provides effective automated issue prioritization (\ref{o1}) and can be tailored to project-specific quality requirements (\ref{o2}).
+Furthermore, even projects with few imperfect trace links and planning artifacts are likely to benefit from \appr{} (\ref{o4}).
+While it has been proven that the maximum flow problem can be solved in polynomial time, the construction of the flow network may be a bottleneck for practical application.
+To assess this possibility, we also show that the construction scales reasonably well for codebases of up to 4 million lines of code on a developer's notebook.
+We argue that considerable optimizations regarding scalability are possible through delta analysis, e.g. on continuous integration servers.
+However, even in its current state,  automated prioritization is likely to be faster than manual prioritization (\ref{o3}).
+
+To optimize prioritization, future work will focus on empirically investigating the appropriate trace link granularity and optimal capacities for calculating the flow network.
+Our goal is to create a repository of artifact import specifications that will allow for widespread use of \appr{} and also serve as a reference for tailoring the flow network construction to project specifics.%
+\edit{
+	Based on the foundational work presented in this paper, we are going to investigate what is needed for better tracing and prioritization, e.g., reducing effort to create and maintain trace links.
+	We will also study how to better address cases currently not covered, such as considering the interaction of multiple security issues, and how relevant information can be embedded into the flow network.
+}
+
+Finally, we aim at a longitudinal study with industry to study the actual time saved by \appr{} and the process of optimizing the configuration of \appr{} concerning different models, among others to also get a better general understanding of how different elements of artifacts such as requirements, models, and code impact traceability and prioritization.
+To this end, \appr{} provides the required tooling for investigating security-related traceability.
+In general, it provides researchers with the means to investigate how security considered at different development levels corresponds with each other.
+We provide tool providers with a effective technique for prioritizing issues taking project-specific security considerations into account.

@@ -1,0 +1,44 @@
+\section{Related Work}
+\label{sec:rw}
+
+Traditionally, issue prioritization is applied in the context of technical depth and optimizing resources for fixing issues.
+One approach is to prioritize the detection rules\,\cite{FV15} which still results in many critical rules. Further, it has been shown that such prioritization is likely to not reflect the impression of developers when inspecting the concrete locations\,\cite{Katin2022}.
+Using such rule priorities, e.g., SonarQube's rule severities, approaches have been proposed to fix as many issues as possible with as low cost as possible. E.g., Alfayez et al. apply an search-based approach for such a multi-criteria prioritization\,\cite{AB19}. Here, \appr{} could provide an additional cost function but we could also include the rule severities or expected cost into the weights of our flow network. Project context is only considered rarely\,\cite{Pina21}. Gupta et al.\,\cite{Gupta2022} try to include context information about the location of issues in the form of code metrics.
+In the context of technical depth, Foidl et al. point out that tools in the context of technical depth should not only take source code into account but the entire system, among others also including data bases and data\,\cite{8906747}. This can easily be addressed by \appr{} by including corresponding models such as entity relationship diagrams.
+
+
+Approaches in the area of taint-based analysis (e.g.,\,\cite{Huang2014, Tripp2013}) use data-flow analysis to determine possible security issues\,\cite{Thome2018}.
+\appr{}, in contrast, uses the flow of security relevance from a quality model through %requirements, design, and a program model
+different development artifacts
+to evaluate the relevance of issues concerning system security.
+%Approaches in that area could be combined with our approach for improving the identification of relevant security warnings.
+Baca\,\cite{Baca2010} describes an approach to reduce the number of security warnings using data-flow analysis on the program code. They prioritize security warnings with data inputs from external sources, which they classify as insecure. In an industry project, they reduce the amount of program code to analyze by 25\%, reduce the number of warnings by 80\%, and increase the ratio of relevant warnings from 5\% to $\approx$~%about
+25\%. In contrast to  our approach, Baca only takes the program code into account.
+The approaches could be combined to achieve even more precise results.
+
+Aloraini et al.\,\cite{Aloraini2019} empirically studied the likelihood of security warnings from static analysis tools to be true or false positives on 116 large C++ projects.
+Their project assesses the relevance of warnings generically, while our approach assesses the relevance for specific projects. Tripp et al.\,\cite{Tripp2014} describe an interactive approach to reduce the number of warnings. % from static security analysis.
+They present warnings to developers to get feedback about the relevance and extrapolate the feedback to other warnings via statistical learning.
+Tan and Tian use deep learning to identify false positive issues in Python code\,\cite{app14135542}, but only consider the source code and the issue itself.
+
+Some approaches to reduce irrelevant security warnings especially target web applications. Thom{\'e} et al.\,\cite{Thome2018} use program slicing\,\cite{Weiser1981} to identify injection vulnerabilities for web applications.
+Lam et al.\,\cite{Lam2008} reduce the number of warnings from static analysis for specific security flaws in web applications using model checking on the high-level concepts of that application domain. Their approach is tied to that domain, while our approach is %aims to be
+more generic. In their approach to reduce %the number of
+security warnings, Tripp et al.\,\cite{Tripp2014a} combine static analysis with partial evaluation of JavaScript~code.
+
+Wang et al.\,\cite{Wang2020DSS} present a security testing-based approach for vulnerability detection, which relies on inter-requirement relations. Vulnerabilities can be caused by conflicts or issues in interrelated security requirements.
+They propagate dependencies from high-level to low-level security requirements to preserve this information.
+Our approach can also benefit from such relation propagation, as more interdependencies raise the maximum flow and thus give more importance to findings that involve dependent security~requirements.
+
+The National Vulnerability Database\,\cite{NVD2021}, which lists almost all reported vulnerabilities, allows comparing the severity of vulnerabilities using the Common Vulnerability Scoring System (CVSS) based on  different vulnerability characteristics\,\cite{CVSS2021}. %The database supports two versions of CVSS (2.0 and 3.0), which are calculated taking different sets of vulnerability characteristics into account , e.g. the required access vector, complexity and impact on confidentiality, integrity and availability. This makes it possible to prioritize the closure of vulnerabilities according to their highest CVSS.
+The problem is that CVSS calculation is not automatically possible when security assessor tools identify a potential vulnerability. % within a software system. %They also usually do not provide this score for detected security flaws.
+%Thus CVSS only applies to known vulnerabilities in concrete software products (which are categorized using CVE) to which the CVSS value has already been assigned manually: "CVSS assumes that a vulnerability has already been discovered and verified"\,\cite{cwss}. It therefore does not help one to automatically prioritize vulnerabilities that have just been found.
+Also, CVSS is not scalable %to the security assessment of a single software package. A detailed assessment, such
+as an automated code scan may report thousands of weakness findings %Because of the high volume, these findings often need to be scored and prioritized before they can be more closely examined to determine if they lead to vulnerabilities"
+\cite{cwss}.
+Therefore, the Common Weakness Scoring System (CWSS\,\cite{cwss}) comparably allows to prioritize the weaknesses of which a vulnerability is an instance.
+%This paper describes an approach for such a prioritization of security warnings while considering traces between software artifacts.
+%Although there also exists the Common Weakness Scoring System (CWSS\,\cite{cwss}) which applies to the more general CWEs (which constitute a broader categorization of the more concrete CVEs that relate to concrete software products), the CWSS is defined rather analogously to CVSS, and in particular has to be provided on the basis of manually provided scoring data and can thus not be derived fully automatically for a newly found weaknesses, which is what the current paper aims to support.
+Interestingly, the CWE Top 25 ranking does not use the CWSS scores, but the average CVSS scores of the corresponding CVE  instances\,\cite{mitre}.
+
+%todo{score with cwss / cvs score? --> too much work. Rating in SonarQube? potential integration of information to QM}
