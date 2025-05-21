@@ -9,9 +9,11 @@ We assume the primary application of \appr{} in domains where regulations requir
 We also assume the application of model-based software engineering (MBSE), which uses models as first-class entities in the development process, e.g., for architecture modeling.
 One application of MBSE is the generation of code from models, which can be used to create trace links between design models and code.
 These can be used in our approach.
-In other domains, the existence of high-quality trace links is untypical, which seems to make the application of \appr{} unfeasible.
-However, as we have shown in the evaluation already some trace links are suitable for obtaining proper prioritization~(\ref{o4}).
-Furthermore, along with high-quality prioritization of issues, applying our approach leads to adopting best practices for software development that development is likely to benefit from in the long term.
+\edit{In other domains, the existence of high-quality trace links is untypical, creating a barrier to the application of \appr.
+%In other domains, the existence of high-quality trace links is untypical, which seems to make the application of \appr{} unfeasible.
+%However, as we have shown in the evaluation already some trace links are suitable for obtaining proper prioritization~(\ref{o4}).
+%Furthermore,
+However,} along with high-quality prioritization of issues, applying our approach leads to adopting best practices for software development that development is likely to benefit from in the long term.
 
 %Also,
 Other works have already shown that model-based development and agile development do not exclude each other\,\cite{Gray2018}.
@@ -48,15 +50,12 @@ referenced in the quality model.
 This idea is %at the core of our method, and it is
 directly implemented through adoption of the priorities in the quality model, and by the flow of relevance.
 
-\edit{
 	The design decision of not only selecting security-focused checks, but also those that may can have a security impact, and others only indirectly impacting security in the long run due to increased complexity and decreased maintainability---increasing the likelihood of security bugs---may limit the expressiveness of the evaluation.
 	While the prioritization of only security checks is a subset of the studied scenario, insights into this scenario can be limited.
 	However, in practice, security cannot be considered in isolation, and outline above, not security focused check can influence the security of a system, therefore rendering the selected scenario practically relevant.
-}
 
-\edit{
+
 	Selecting SonarQube rule priorities as comparator limits the comparability of the results. However, as discussed in detail in \autoref{sec:eval}, there is currently no suitable alternative comparator and SonarQube is widely used in practice.
-}
 
 \textit{External Validity:}
 %external validity: refers to the extent to which results from a study can be applied (generalized) to other situations, groups or events. Q: Is the cause and effect relationship we have shown valid in other situations? Can we generalize our results? Do the results apply in other contexts?
@@ -71,15 +70,12 @@ In usability, for example, only a minor portion of the software might be usabili
 We have focused only on security to achieve substantial depth in that one issue.
 Generalization beyond security seems possible but would need thorough investigation.
 
-\edit{The scenarios used for evaluation may not allow generalization to other scenarios.
-To lower this threat, }
-we evaluated \appr\ with iTrust and the CWA, two different real world software projects from a security critical domain, that have different purpose and context.
+The scenarios used for evaluation may not allow generalization to other scenarios.
+To lower this threat, we evaluated \appr\ with iTrust and the CWA, two different real world software projects from a security critical domain, that have different purpose and context.
 Scalability for large flow networks is shown.
 
-\edit{
 	The selection of SonarQube as analyzer may not be representative and does not allow to generalize the insights to isses detected by of other analyzers.
 	However, since SonarQube is a multi-purpose analyzer that provides checks covering various domains, this threat is limited.
-}
 
 \textit{Internal Validity:}
 %internal validity: refers to the degree of confidence that the causal relationship being tested is trustworthy and not influenced by other factors or variables Q: Did the treatment/change we introduced cause the effect on the outcome? Can other factors also have had an effect?
@@ -109,11 +105,10 @@ This complies with our vision: It does not depend on those who apply the algorit
 Other configurations are likely to reflect other preferences. In the same way, the prioritization of quality aspects in the quality model is a subjective human choice. Bringing those choices and decisions to bear is an essential part of our approach.
 
 \textit{Limitations:}
-\edit{In practice, multiple interacting issues could be necessary to result in an exploitable security violation.
+In practice, multiple interacting issues could be necessary to result in an exploitable security violation.
 Currently \appr{} provides no explicit support for including such information in the prioritization, but could be added by additional trace links connecting issue types known to be exploited in combination.
 However, to immediately generate such trace links representing interacting issues, a better conceptual understanding of interacting security issues is needed, which is out of scope of this work.
 Nevertheless, for these issues to have a serious impact on the security of the system, they must be located in a critical part of the system and threaten essential security-related qualities captured in the quality model.
-}
 
 	Since \appr{} requires manually created artifacts and trace links to prioritize issues, this could be a limitation to its applicability.
 However, we have shown that the required artifacts can be easily created through lightweight security engineering processes.
@@ -126,9 +121,7 @@ However, this is intended, as different issues may be more important to one orga
 	However, it allows for prioritizing issues detected by other analyzers, helping to address issues in critical parts of the system first, increasing their comprehensibility and maintainability.
 	This makes these parts less error-prone\,\cite{FV15}, and therefore, can reduce the likelihood of introducing dangerous bugs in these locations.
 
-	\edit{
 		As for every tool, there is the unavoidable risk of false positives and false negatives, in our case issues prioritized too high or low.
 		One particular aspect influencing this is the assumption of critical locations of the system are more important in respect to security than others.
 		However there is the possibility of critical exploitable vulnerabilities in uncritical parts of the system that could, e.g., allow a remote code execution, therefore impacting the entire system.
 		While our assumption aligns with recommendations for code reviews---identifying critical locations and security features first that are then reviewed \cite{Howard2006}---, which would lead to the same limitations in a manual code review, \appr{} should not be used without manual considerations.
-	}

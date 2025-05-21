@@ -5,11 +5,9 @@
 While considering security as a core aspect early in the development of software-intensive systems is becoming increasingly important and adopted in practice\,\cite{10.1145/3468264.3473926,Peldszus2025}, vulnerabilities still reside in the concrete implementation of a system.
 Nevertheless, planning for security, i.e., designing a secure architecture\,\cite{1281254}, taking into account typical threats and best practices that have proven to be secure, is one of the most important steps in the development of a secure software.
 The planned security design builds the foundation for the actual system and must be implemented in code\,\cite{1281254,10.1145/3385678.3385687}.
-However, because it is a common misconception that developers are well informed about software security\,\cite{Ryan2023}, it is likely that developers will make security-related mistakes. As a result, implementations often contain vulnerabilities that are either immediately exploitable or that invalidate assumptions made in the security design, such as exposing data considered critical in the design to other spheres of influence.%
-\edit{
-    Unfortunately, such security-critical mistakes are often hidden by many other flaws concerning qualities such as maintainability.
-    Furthermore, since the primary incentive of developers is to provide functionality, even though they consider security to be important, they prioritize functionality over security\,\cite{Peldszus2025}, and therefore may tend to fix problems that complicate the implementation of functionality instead of searching for security issues and fixing them.
-}
+However, because it is a common misconception that developers are well informed about software security\,\cite{Ryan2023}, it is likely that developers will make security-related mistakes. As a result, implementations often contain vulnerabilities that are either immediately exploitable or that invalidate assumptions made in the security design, such as exposing data considered critical in the design to other spheres of influence.
+Unfortunately, such security-critical mistakes are often hidden by many other flaws concerning qualities such as maintainability.
+Furthermore, since the primary incentive of developers is to provide functionality, even though they consider security to be important, they prioritize functionality over security\,\cite{Peldszus2025}, and therefore may tend to fix problems that complicate the implementation of functionality instead of searching for security issues and fixing them.
 
 To help in identifying and fixing potential security-related mistakes, state-of-the-art static analyzers like \emph{SonarQube}\,\cite{sonar}, which is widely deployed in many development pipelines, focus on detecting code smells, or bugs and flaws that resemble them.
 Code smells are locally confined anomalies that can be detected without a thorough examination of the context\,\cite{peldszus2016continuous}. They are usually at the level of classes, methods, or individual code statements.
@@ -140,7 +138,7 @@ To this end, the contributions presented in this paper are:
         \item its effectiveness in issue prioritization in comparison to widely used state-of-the-art rule priorities,
         \item how well project specific security requirements can be considered in the prioritization based on preferences specified in quality models,
         \item the scalability of \appr{} in the context of large projects and the involved overhead for using it, and
-        \item the impact of imperfect trace links and planning artifacts on the prioritization.
+       % \item the impact of imperfect trace links and planning artifacts on the prioritization.
     \end{itemize}
 
     Evaluation results show that our prioritization is closer to manual prioritization than prioritization based on SonarQube rule priorities, that project-specific preferences captured in a quality model indeed influence the issue prioritization, and that our technique scales well even for large software projects.
