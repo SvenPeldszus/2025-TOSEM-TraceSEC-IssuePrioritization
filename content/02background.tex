@@ -1,8 +1,22 @@
 \section{Background}
 \label{sec:background}
-
 %In this section,
 This section gives a short overview of security engineering, trace links, and maximum flow analysis as used in \appr.
+
+\edit{
+\subsection{Vulnerabilities and Weaknesses}
+A vulnerability is a flaw in a software system that an attacker can exploit to compromise its confidentiality, integrity, or availability\,\cite{Shahriar2012,NVD2021, OWASP-Top10}.
+Examples include security-critical bugs in the source code and missing security features that leave the system susceptible to attacks.
+Vulnerabilities often stem from underlying issues in the software's design, implementation, or configuration.
+Exploitation of these vulnerabilities can lead to severe consequences, such as data breaches, unauthorized access, or service disruption\,\cite{Telang2007}.
+%
+The faults behind vulnerabilities are generally categorized into broader conceptual weaknesses, which represent classes of vulnerabilities sharing similar root causes\,\cite{cwe}.
+For example, weaknesses such as buffer overflows, input validation errors, and insecure authentication mechanisms fall under these categories
+Consequently, a specific vulnerability is an instance of one or more of these weaknesses.
+%
+In software analysis, static code analyzers often detect vulnerabilities by examining source code for security issues \cite{Shahriar2012}.
+These tools are usually designed to identify specific code patterns or constructs that reflect specific weaknesses, thereby detecting potential vulnerabilities.
+}
 
 \subsection{Security Engineering Practices}
 Best practices in security engineering are critical to ensuring the development of secure and robust software systems\,\cite{1281254}.

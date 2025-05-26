@@ -11,7 +11,7 @@ As part of the issue prioritization, those quality priorities are fully automate
 %We interpret this as a "flow" of relevance along the refinement and development activities. Traces of these activities ("A reads X, then writes Y" $\rightarrow$ trace from X to Y) are modeled as pipes.
 In the end, relevance flows from the quality model along the trace links to the issues detected in the implementation, e.g., by SonarQube.
 
-    The issues that analyzers can detect are often associated with the weaknesses of which they are an instance.
+    The issues that analyzers can detect are often associated with the weaknesses of which they are an instance\edit{, e.g., the detection rules of SonarQube\,\cite{sonar} are often linked to relevant weaknesses in the Common Weakness Enumeration (CWE)\,\cite{cwe}}.
     Since different weaknesses can affect different security qualities captured in the quality model, this information helps developers assess the impact of an issue.
     However, it is only part of what they need to consider.
     Typically, developers also consider other aspects, such as where an issue is found in relation to the security design of the system, when assessing its impact.
@@ -28,7 +28,7 @@ In the end, relevance flows from the quality model along the trace links to the 
 	    In \appr{}, we consider three aspects in the prioritization of issues concerning their security impact on the project.
 	    \begin{description}
 	        \item \textbf{Aspect 1: Location of the issue.} The importance of a specific code location in the project at which an issue resides is determined via its connection to the quality model. To this end, all trace links between a projects artifacts as well as trace links within these artifacts are considered.
-	        \item \textbf{Aspect 2: Manual considerations.} Whether code parts related to the issue are considered in manual security planning may increase the importance of specific code locations. This is reflected by direct trace links between artifacts instead of transitive trace links. These are considered to be only present if they have explicitly been created as part of the manual engineering process.
+	        \item \textbf{Aspect 2: Manual considerations.} Whether code parts related to the issue are considered in security planning may increase the importance of specific code locations. This is reflected by direct trace links between artifacts instead of transitive trace links. These are considered to be only present if they have explicitly been created as part of the manual engineering process.
 	        \item \textbf{Aspect 3: Security impact.} How the issue itself is related to security aspects captured in the quality model and which of those are threatened is an important factor in prioritizing issues. This relation is expressed via direct trace links between issues and the corresponding security preferences in the quality model.
 	    \end{description}
 
