@@ -11,7 +11,7 @@ Vulnerabilities often stem from underlying issues in the software's design, impl
 Exploitation of these vulnerabilities can lead to severe consequences, such as data breaches, unauthorized access, or service disruption\,\cite{Telang2007}.
 %
 The faults behind vulnerabilities are generally categorized into broader conceptual weaknesses, which represent classes of vulnerabilities sharing similar root causes\,\cite{cwe}.
-For example, weaknesses such as buffer overflows, input validation errors, and insecure authentication mechanisms fall under these categories
+For example, weaknesses such as buffer overflows, input validation errors, and insecure authentication mechanisms fall under these categories.
 Consequently, a specific vulnerability is an instance of one or more of these weaknesses.
 %
 In software analysis, static code analyzers often detect vulnerabilities by examining source code for security issues \cite{Shahriar2012}.
@@ -40,7 +40,7 @@ In addition, tools can statically check for compliance with best practices\,\cit
 Overall, tool support, particularly in the form of static security analyzers\,\cite{BCP+13}, is essential to an effective security engineering process.
 However, as discussed earlier, the output of such tools is likely to be overwhelmingly large\,\cite{Walden2014}.
 
-Many security engineering approaches explicitly combine several artifacts to support security engineering, such as requirements, UML models annotated with the UMLsec\,\cite{jurjens2005secure} security profile, and security standards such as the Common Criteria\,\cite{houmb2010eliciting}, other combine
+Many security engineering approaches explicitly combine several artifacts to support security engineering\,\cite{Krausz2024}, such as requirements, UML models annotated with the UMLsec\,\cite{jurjens2005secure} security profile, and security standards such as the Common Criteria\,\cite{houmb2010eliciting}, other combine
 SecBPMN models\,\cite{Salnitri2017DSB} and security oriented goal models\,\cite{Salnitri2020},
 risk models and requirements\,\cite{5507389}, or design models and source code\,\cite{Peldszus2022}.
 Tracing, for example of security requirements, is typically a key component of these approaches and is also essential for security maintenance\,\cite{Yu2008}.
@@ -88,11 +88,12 @@ For data flow diagrams (DFDs), which are widely used for threat modeling, semi-a
 Similar approaches exist for many other artifact types\,\cite{Rasiman2022,Merten2016}.
 Among others, there is work on detecting dependencies between requirements\,\cite{Samer2019NAI,Wang2020DSS}, recovering trace links between requirements and the architecture\,\cite{Goknil2014,Keim2024},
 between requirements and source code\,\cite{10.1145/2491627.2491633,Hey2024}, and between the architecture and source code\,\cite{keim2021trace}.
+Security features in the implementation of software systems can be located via their code APIs and traced to relevant security standards\,\cite{Hermann2025}.
 Other research goes into the direction of automatically completing incomplete sets of trace links, e.g., between entries in issue trackers and commits\,\cite{rath2018}.
 
 \subsection{The Maximum Flow Problem}
 \noindent
-The maximum flow problem is a common problem in graph theory\,\cite{harris1955} to which we will reduce the problem of issue prioritization.%
+The maximum flow problem is a common problem in graph theory\,\cite{harris1955} to which we will reduce the problem of issue prioritization.
 This problem is commonly used to express connectivity in graphs\,\cite{Esfahanian2013}, such as how strong two nodes are connected.
 In practice, this is applied for optimization problems such as flight crew planning, dimensioning telecommunication networks, or optimizing transportation\,\cite{Feng2012}.
 We consider a project's security preferences captured in relevant security qualities to be the core reference for security planning and engineering.

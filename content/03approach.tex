@@ -27,7 +27,7 @@ In the end, relevance flows from the quality model along the trace links to the 
 
 	    In \appr{}, we consider three aspects in the prioritization of issues concerning their security impact on the project.
 	    \begin{description}
-	        \item \textbf{Aspect 1: Location of the issue.} The importance of a specific code location in the project at which an issue resides is determined via its connection to the quality model. To this end, all trace links between a projects artifacts as well as trace links within these artifacts are considered.
+	        \item \textbf{Aspect 1: Location of the issue.} The importance of the code location of an issue within a project is determined by its connection to the quality model. In this regard, all trace links between the project's artifacts, as well as the trace links within these artifacts, are considered.
 	        \item \textbf{Aspect 2: Manual considerations.} Whether code parts related to the issue are considered in security planning may increase the importance of specific code locations. This is reflected by direct trace links between artifacts instead of transitive trace links. These are considered to be only present if they have explicitly been created as part of the manual engineering process.
 	        \item \textbf{Aspect 3: Security impact.} How the issue itself is related to security aspects captured in the quality model and which of those are threatened is an important factor in prioritizing issues. This relation is expressed via direct trace links between issues and the corresponding security preferences in the quality model.
 	    \end{description}

@@ -20,7 +20,7 @@ We implemented \appr{} in Java with an Eclipse\,\cite{eclipse} plugin as a front
 The tool introduces a wizard for calculating priorities for a Java project.
 \autoref{fig:wizard} shows the UI of the wizard for selecting the models to be considered in the prioritization.
 In the upper half, the user selects the quality model, the program model, models containing trace links, and other models to be considered, such as requirements or UML models.
-The tool uses the EMF for models.
+The tool uses the Eclipse Modeling Framework (EMF)\,\cite{steinberg2008emf} for models.
 In the lower half, the user arranges the selected models to define the order of the artifacts from which the tool calculates the distance between model elements needed to compute the flow in the flow network. In addition, the user specifies a configuration file that declares project specific capacities and ignores certain types of relationships using the DSL we provide, as shown in an example in~\autoref{dsl}.
 The SonarQube issues are calculated (if not already present) and added as annotations to the program model.
 
@@ -175,19 +175,19 @@ The majority of issues, 65 for CWA and 58 for iTrust, were rated with a priority
 
 %Trace dependencies are used by the tool to make up for the intuition about the code that the developer has, but the tool does not have.
 
-The automated \appr\ approach does not categorize the issues from 1 to 10 but assigns different values, based on the maximum flow that reaches the issue.
+The automated \appr\ prioritization technique does not use fixed priorities from 1 to 10, but assigns values based on the maximum flow reaching the issue.
 SonarQube labels issues with five different severities ranging from \textit{Info} to \textit{Blocker} to which we assigned values from 0 to 4.
 However, as the goal is to prioritize the findings, the absolute numbers are not relevant.
 What we are interested in is the ordering. We compare the three rankings of the same 100 issues.
 
 \subsubsection{Results}
 %
-In a first comparisan, to study the general alignment of the prioritizations, we compared the prioritizations using the Spearman rank correlation coefficient\,\cite{10.2307/1412159}.
+In a first comparison, to study the general alignment of the prioritizations, we compared the prioritizations using the Spearman rank correlation coefficient\,\cite{10.2307/1412159}.
 \autoref{tab:correlations} shows the %calculated
 R-values and the significance level at which our results are significant.
 These R-values indicate that all correlations are significant at a significance level of 0.01\,\cite{Whitlock2008ABD}.
 The rankings calculated using \appr{} correlate much stronger with the manual rankings than SonarQube's severities.
-In line with our basic assumption,  only very few issues ($\approx$4\%) are considered to be highly important for iTrust, in the manual and our approach's ranking. In particular, only one is rated 10 manually---while there are very many critical issues according to SonarQube's severities---one fourth of all issues.
+In line with our basic assumption,  only very few issues ($\approx$4\%) are considered to be highly important for iTrust, in the manual and \appr 's ranking. In particular, only one issue is rated 10 manually, while there are very many critical issues according to SonarQube's severities---one fourth of all issues.
 We made the same observation for the CWA.
 Generally, \appr{} and the manual rankings agree upon issues being low, medium, or highly relevant.
 E.g., for iTrust, the 40 lowest rated issues are the same in both orderings and besides one outlier all issues manually rated as important also got a high priority by \appr.

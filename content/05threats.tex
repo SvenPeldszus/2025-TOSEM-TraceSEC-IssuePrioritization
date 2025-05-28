@@ -8,12 +8,12 @@ To date, the maintenance of trace links is a considerable effort, despite progre
 We assume the primary application of \appr{} in domains where regulations require maintaining  trace links, e.g., medical device software with ISO/IEC 62304\,\cite{IEC62304} or vehicle software with ISO 26262\,\cite{ISO26262}.
 We also assume the application of model-based software engineering (MBSE), which uses models as first-class entities in the development process, e.g., for architecture modeling.
 One application of MBSE is the generation of code from models, which can be used to create trace links between design models and code.
-These can be used in our approach.
+These can be used in the \appr{} prioritization technique.
 \edit{In other domains, the existence of high-quality trace links is untypical, creating a barrier to the application of \appr.
 %In other domains, the existence of high-quality trace links is untypical, which seems to make the application of \appr{} unfeasible.
 %However, as we have shown in the evaluation already some trace links are suitable for obtaining proper prioritization~(\ref{o4}).
 %Furthermore,
-However,} along with high-quality prioritization of issues, applying our approach leads to adopting best practices for software development that development is likely to benefit from in the long term.
+However,} along with high-quality prioritization of issues, applying \appr{} leads to adopting best practices for software development that development is likely to benefit from in the long term.
 
 %Also,
 Other works have already shown that model-based development and agile development do not exclude each other\,\cite{Gray2018}.
@@ -22,7 +22,7 @@ Particularly in agile environments static analyzers are continuously executed as
 Similarly, quality models are not present in many cases.
 However, the respective information, like for trace links, is usually present in safety- or security-critical domains, e.g., as free text or threat analysis\,\cite{TUMA2018275}, as we used it from CWA.
 We suggest formalizing  these quality assumptions and priorities into a model.
-Our approach is usable with just a quality model and trace links into the code.
+\appr{} is usable with just a quality model and trace links into the code.
 %\edit{Relation of precision vs. recall - we do not filter but sort to have no negative impact on recall. Approach can be combined with whatever static analyzer}
 %\edit{Minimal approach: only QM + Code?}
 
