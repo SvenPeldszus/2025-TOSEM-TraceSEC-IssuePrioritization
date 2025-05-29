@@ -451,7 +451,7 @@ Therefore, when adding edges to the flow network, we refine importance in the co
 %Therefore, when adding edges to the flow network, the underlying assumption is that importance always flows \emph{from coarse-grained elements to fine-grained elements}.
 If we would allow flows in the opposite direction, this would allow additional flows over entirely unrelated elements and therefore prevent proper prioritization.
 For example, consider a flow from a requirement to an element in the system design that then propagates trough the design until it reaches an design element relevant to an additional unrelated requirement, which will eventually happen in every system unless it could be split into two independent systems.
-This second requirements then has relations to additional parts of the implementation entirely unrelated to the first requirements but will allow flows that suggest an relation.
+This second requirement then has relationships to additional parts of the implementation that are entirely unrelated to the first requirement, but allow flows that suggest a relationship.
 To this end, it is not necessary to explicitly specify the direction in which trace links should point or whether they should be considered, but only the order of the artifacts between which trace links exist.
 In the construction algorithm, all trace links are added to the flow network and the direction is derived from the order of the artifacts.
 It is also necessary to calculate the capacity with which they should be added.
@@ -501,7 +501,7 @@ We explain the syntax of the DSL on the example.
 The syntax itself is written in the Xtext\,\cite{xtext} language grammar, which is similar to the Extended Backus–Naur Form (EBNF)\,\cite{Yue2014}.
 
 Each instance represents a \texttt{Configuration} that makes an arbitrary number of metamodels, e.g., for representing requirements or design models, accessible to \appr{}.
-We assume that the metamodels are organized by \texttt{Namespace}s, as in the Eclipse Modeling Framework (EMF)\,\cite{steinberg2008emf, EMFBook}.
+We assume that the metamodels are organized by \texttt{Namespace}s, as in the Eclipse Modeling Framework (EMF)\,\cite{steinberg2008emf}.
 For each namespace, one can specify a default capacity for all references within the metamodel and whether all its elements should be considered by default or not.
 
 For example, in lines 1--4 of \autoref{dsl}, in the artifact import specification for the UML metamodel, we specify that all elements should be included with a capacity of~2.
