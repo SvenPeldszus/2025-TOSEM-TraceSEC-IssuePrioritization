@@ -68,7 +68,8 @@ xleftmargin=10pt%\parindent
   \providecommand\BibTeX{{%
     \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
 
-\newcommand{\edit}[1]{\textcolor{blue}{{#1}}}
+%\newcommand{\edit}[1]{\textcolor{blue}{{#1}}}
+\newcommand{\edit}[1]{#1}
 
 \acmJournal{TOSEM}
 %\setcopyright{acmcopyright}
@@ -169,8 +170,8 @@ xleftmargin=10pt%\parindent
 %% (and NOT an unnumbered section). This ensures the proper
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
-%\section*{Acknowledgment}
-%Lorem ipsum
+\section*{Acknowledgment}
+This work was partially supported by the Deutsche Forschungsgemeinschaft (DFG) under Grant No.: 500462081, project TraceSEC -- Tracing and Explaining Security in Software Engineering.
 
 \balance
 \bibliographystyle{acm}
